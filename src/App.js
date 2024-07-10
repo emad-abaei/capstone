@@ -1,7 +1,8 @@
 import "./App.css";
+import AppLayout from "./components/AppLayout";
 
 function App() {
-  return <div className='App'>Hello React</div>;
+  return <AppLayout />;
 }
 
 export default App;

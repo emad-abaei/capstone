@@ -5,11 +5,11 @@ import Main from "./Main";
 
 function AppLayout() {
   return (
-    <>
+    <div className='app-layout'>
       <Header />
       <Main />
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </div>
   );
 }
 

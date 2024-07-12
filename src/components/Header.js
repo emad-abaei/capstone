@@ -1,9 +1,9 @@
 import Logo from "./Logo";
 import Nav from "./Nav";
 
-function Header({ children }) {
+function Header() {
   return (
-    <header>
+    <header className='header'>
       <Logo />
       <Nav />
     </header>

@@ -2,12 +2,20 @@
   /* Primary */
   --color-primary-dark: #495e57;
   --color-primary-light: #f4ce14;
+  --color-primary-light-hover: #f5da53;
 
   /* Secondary */
   --color-secondary-dark: #ee9972;
   --color-secondary-light: #fbdabb;
-  --color-secondary-silver: #edefee;
-  --color-secondary-black: #333333;
+
+  /* highlight */
+  --color-highlight-silver: #edefee;
+  --color-highlight-black: #333333;
+  --color-highlight-white: #ffffff;
+
+  --border-radius-sm: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
 }
 
 *,
@@ -25,7 +33,7 @@ body {
   min-height: 100vh;
   font-family: "Karla", sans-serif;
   font-size: 1.6rem;
-  color: var(--color-secondary-black);
+  color: var(--color-highlight-black);
   line-height: 1.5;
 }
 
@@ -49,15 +57,7 @@ button {
 input:disabled {
   background-color: var(--color-grey-200);
   color: var(--color-grey-500);
-}
-
-input:focus,
-button:focus,
-textarea:focus,
-select:focus {
-  outline: 2px solid var(--color-brand-600);
-  outline-offset: -1px;
-} */
+}*/
 
 /* Parent selector, finally 😃 */
 /* button:has(svg) {
@@ -91,8 +91,123 @@ h4,
 h5,
 h6 {
   font-family: "Markazi Text", serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 6.4rem;
+}
+
+h2 {
+  font-size: 4rem;
 }
 
 img {
   max-width: 100%;
 }
+
+button {
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  font-weight: 700;
+  border: none;
+  background-color: var(--color-primary-light);
+  border-radius: var(--border-radius-lg);
+  transition: 0.25s all ease-in-out;
+}
+
+button:hover {
+  background-color: var(--color-primary-light-hover);
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.app-layout {
+  display: grid;
+}
+
+.header {
+  width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+  background-color: var(--color-highlight-white);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav ul {
+  display: flex;
+  gap: 2rem;
+  font-weight: 700;
+}
+
+.main {
+  background-color: var(--color-secondary-dark);
+}
+
+/* Hero section */
+.hero {
+  background-color: var(--color-primary-dark);
+}
+
+.hero .hero__container {
+  position: relative;
+  width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.hero .hero__content,
+.hero .hero__image {
+  max-width: 30rem;
+}
+
+.hero .hero__image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--border-radius-xl);
+
+  position: absolute;
+  right: 0;
+  top: 2rem;
+
+  background-image: url("../public/assets/images/restaurantfood.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  margin-top: 2rem;
+  line-height: 0;
+  color: var(--color-primary-light);
+  text-transform: capitalize;
+}
+
+.hero h2 {
+  margin-top: 0.5rem;
+  color: var(--color-highlight-silver);
+  text-transform: capitalize;
+}
+
+.hero p {
+  margin: 10px 0 2rem;
+  font-weight: 600;
+  color: var(--color-highlight-silver);
+}
+
+/* Specials section */
+.footer {
+  background-color: var(--color-primary-light);
+}
+
+/* .container {
+  width: 80rem;
+  margin: 0 auto;
+} */

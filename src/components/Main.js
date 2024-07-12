@@ -1,5 +1,13 @@
+import Hero from "./Hero";
+import Specials from "./Specials";
+
 function Main() {
-  return <main>This is the main section</main>;
+  return (
+    <main className='main'>
+      <Hero />
+      <Specials />
+    </main>
+  );
 }
 
 export default Main;

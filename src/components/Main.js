@@ -1,3 +1,4 @@
+import Container from "./Container";
 import Hero from "./Hero";
 import Specials from "./Specials";
 
@@ -5,7 +6,9 @@ function Main() {
   return (
     <main className='main'>
       <Hero />
-      <Specials />
+      <Container>
+        <Specials />
+      </Container>
     </main>
   );
 }

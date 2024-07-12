@@ -102,6 +102,11 @@ h2 {
   font-size: 4rem;
 }
 
+h3 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
 img {
   max-width: 100%;
 }
@@ -118,6 +123,15 @@ button {
 
 button:hover {
   background-color: var(--color-primary-light-hover);
+}
+
+button.delivery {
+  padding: 0;
+  background-color: transparent;
+}
+
+button.delivery:hover {
+  color: var(--color-highlight-black);
 }
 
 input:focus,
@@ -149,7 +163,12 @@ select:focus {
 }
 
 .main {
-  background-color: var(--color-secondary-dark);
+  background-color: var(--color-secondary-light);
+}
+
+.container {
+  width: 80rem;
+  margin: 0 auto;
 }
 
 /* Hero section */
@@ -203,11 +222,54 @@ select:focus {
 }
 
 /* Specials section */
+.specials {
+  margin-bottom: 8rem;
+}
+
+.specials__header {
+  margin: 8rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specials__content {
+}
+
+.specials__item {
+  max-width: 30rem;
+  background-color: var(--color-highlight-silver);
+}
+
+.specials__item__content {
+  padding: 2rem;
+}
+
+.specials__item__content div {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specials__item__name {
+  text-transform: capitalize;
+}
+.specials__item__price {
+  color: var(--color-secondary-dark);
+}
+
+.specials__item__description {
+  margin: 2rem 0;
+  font-size: 1.4rem;
+}
+
+.specials__item,
+.specials__item img {
+  border-top-right-radius: var(--border-radius-xl);
+  border-top-left-radius: var(--border-radius-xl);
+}
+/* Footer */
 .footer {
   background-color: var(--color-primary-light);
 }
-
-/* .container {
-  width: 80rem;
-  margin: 0 auto;
-} */

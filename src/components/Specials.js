@@ -1,8 +1,11 @@
-import React from "react";
 import Button from "./Button";
-import { MdDeliveryDining } from "react-icons/md";
+import SpeciatlItem from "./SpeciatlItem";
+// Dummy data
+import { SPECIALS_DATA } from "../data/dummyData";
 
 function Specials() {
+  const specialItems = SPECIALS_DATA;
+
   return (
     <section className='specials'>
       <div className='specials__header'>
@@ -12,24 +15,12 @@ function Specials() {
         </div>
       </div>
       <div className='specials__content'>
-        <div className='specials__item'>
-          <img src='/assets/images/greek salad.jpg' alt='' />
-          <div className='specials__item__content'>
-            <div>
-              <h3 className='specials__item__name'>greek salad</h3>
-              <span className='specials__item__price'>$12.00</span>
-            </div>
-            <p className='specials__item__description'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum minus
-              deleniti? Nostrum consequatur quae dicta quo neque illo
-              consectetur nam necessitatibus deserunt!
-            </p>
-            <Button type='delivery'>
-              <span>Order a delivery </span>
-              <MdDeliveryDining size={25} />
-            </Button>
-          </div>
-        </div>
+        {specialItems.map((item) => (
+          <SpeciatlItem item={item} key={item.key} />
+        ))}
+        {/* <SpeciatlItem />
+        <SpeciatlItem />
+        <SpeciatlItem /> */}
       </div>
     </section>
   );

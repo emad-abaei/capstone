@@ -130,6 +130,7 @@ button:hover {
 }
 
 button.delivery {
+  margin-top: auto;
   padding: 0;
   background-color: transparent;
 }
@@ -238,11 +239,19 @@ select:focus {
 }
 
 .specials__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .specials__item {
   max-width: 30rem;
   background-color: var(--color-highlight-silver);
+}
+
+.specials__item img {
+  width: 100%;
+  /* max-height: 160px; */
 }
 
 .specials__item__content {

@@ -1,3 +1,16 @@
+:root {
+  /* Primary */
+  --color-primary-dark: #495e57;
+  --color-primary-light: #f4ce14;
+
+  /* Secondary */
+  --color-secondary-dark: #ee9972;
+  --color-secondary-light: #fbdabb;
+  --color-secondary-silver: #edefee;
+  --color-secondary-black: #333333;
+}
+
 body {
   font-family: sans-serif;
+  color: var(--color-secondary-black);
 }

@@ -25,7 +25,8 @@ function Specials() {
               consectetur nam necessitatibus deserunt!
             </p>
             <Button type='delivery'>
-              Order a delivery <MdDeliveryDining />
+              <span>Order a delivery </span>
+              <MdDeliveryDining size={25} />
             </Button>
           </div>
         </div>

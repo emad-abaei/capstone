@@ -119,6 +119,10 @@ button {
   background-color: var(--color-primary-light);
   border-radius: var(--border-radius-lg);
   transition: 0.25s all ease-in-out;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 button:hover {
@@ -131,7 +135,7 @@ button.delivery {
 }
 
 button.delivery:hover {
-  color: var(--color-highlight-black);
+  color: var(--color-secondary-dark);
 }
 
 input:focus,

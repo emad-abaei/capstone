@@ -24,3 +24,34 @@ export const SPECIALS_DATA = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum minus deleniti? Nostrum consectetur nam necessitatibu!"
   }
 ];
+
+export const TESTIMONILS_DATA = [
+  {
+    id: "01",
+    image: "/assets/images/user-01.jpg",
+    name: "Veniamin Aris",
+    rate: "3",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  },
+  {
+    id: "02",
+    image: "/assets/images/user-02.jpg",
+    name: "Yun Heng",
+    rate: "2",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  },
+  {
+    id: "03",
+    image: "/assets/images/user-03.jpg",
+    name: "Mirza Javad",
+    rate: "5",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  },
+  {
+    id: "04",
+    image: "/assets/images/user-04.jpg",
+    name: "Martina Janka",
+    rate: "4",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  }
+];

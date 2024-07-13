@@ -1,6 +1,8 @@
+import About from "./About";
 import Container from "./Container";
 import Hero from "./Hero";
 import Specials from "./Specials";
+import Testimonials from "./Testimonials";
 
 function Main() {
   return (
@@ -8,6 +10,8 @@ function Main() {
       <Hero />
       <Container>
         <Specials />
+        <Testimonials />
+        <About />
       </Container>
     </main>
   );

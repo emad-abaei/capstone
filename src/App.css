@@ -16,6 +16,7 @@
   --border-radius-sm: 0.5rem;
   --border-radius-lg: 1rem;
   --border-radius-xl: 1.5rem;
+  --border-radius-full: 50%;
 }
 
 *,
@@ -168,7 +169,7 @@ select:focus {
 }
 
 .main {
-  background-color: var(--color-secondary-light);
+  /* background-color: var(--color-secondary-light); */
 }
 
 .container {
@@ -292,7 +293,104 @@ select:focus {
   flex-grow: 1;
 }
 
+/* Testimonials section */
+.testimonials {
+  height: 600px;
+  padding: 10rem 0;
+}
+
+.testimonials h1 {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.testimonials__items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.testimonials__item {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-highlight-silver);
+  border-radius: var(--border-radius-sm);
+}
+
+.testimonials__name {
+  text-transform: capitalize;
+}
+
+.testimonials__content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonials__content img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: var(--border-radius-full);
+}
+
+.testimonials__content p {
+  font-size: 1.3rem;
+}
+
+.rate {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: start;
+  gap: 0.4rem;
+}
+
+/* About section */
+.about {
+  padding: 5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.about h1 {
+  margin-top: 2rem;
+  line-height: 0;
+  color: var(--color-primary-light);
+  text-transform: capitalize;
+}
+
+.about h2 {
+  margin-top: 0.5rem;
+  color: var(--color-secondary-dark);
+  text-transform: capitalize;
+}
+
+.about p {
+  margin: 10px 0 2rem;
+  font-weight: 600;
+  color: var(--color-highlight-black);
+}
+
+.about__image {
+  position: relative;
+}
+
+.about img {
+  max-width: 70%;
+  position: absolute;
+  border-radius: var(--border-radius-lg);
+}
+.about img:first-child {
+  top: 10%;
+  right: 0;
+}
+
+.about img:last-child {
+  bottom: 10%;
+  left: 0;
+}
 /* Footer */
 .footer {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-highlight-silver);
 }

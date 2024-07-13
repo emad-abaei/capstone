@@ -8,7 +8,7 @@ function AppLayout() {
     <div className='app-layout'>
       <Header />
       <Main />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

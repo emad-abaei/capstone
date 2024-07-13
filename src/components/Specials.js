@@ -1,6 +1,6 @@
 // Components
 import Button from "./Button";
-import SpeciatlItem from "./SpeciatlItem";
+import SpecialItem from "./SpecialItem";
 // Dummy data
 import { SPECIALS_DATA } from "../data/dummyData";
 
@@ -17,7 +17,7 @@ function Specials() {
       </div>
       <div className='specials__content'>
         {specialItems.map((item) => (
-          <SpeciatlItem item={item} key={item.key} />
+          <SpecialItem item={item} key={item.id} />
         ))}
       </div>
     </section>

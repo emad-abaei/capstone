@@ -1,6 +1,7 @@
-import React from "react";
-import { MdDeliveryDining } from "react-icons/md";
+// Components
 import Button from "./Button";
+// Icons
+import { MdDeliveryDining } from "react-icons/md";
 
 function SpeciatlItem({ item }) {
   return (

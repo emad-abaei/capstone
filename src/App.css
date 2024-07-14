@@ -442,3 +442,9 @@ select:focus {
   grid-template-rows: 1fr 1fr;
   gap: 2rem;
 }
+
+form {
+  display: grid;
+  max-width: 200px;
+  gap: 20px;
+}

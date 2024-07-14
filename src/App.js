@@ -1,10 +1,13 @@
+// React router
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import "./App.css";
+// Components
 import AppLayout from "./components/AppLayout";
 import BookingPage from "./pages/BookingPage";
 import Homepage from "./pages/Homepage";
 import MenuPage from "./pages/MenuPage";
 import LoginPage from "./pages/LoginPage";
+// Styles
+import "./App.css";
 
 function App() {
   return (

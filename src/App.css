@@ -151,6 +151,8 @@ select:focus {
 
 .app-layout {
   display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }
 
 .header {
@@ -352,7 +354,7 @@ select:focus {
 
 /* About section */
 .about {
-  padding: 5rem 0;
+  padding: 5rem 0 15rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
@@ -397,7 +399,6 @@ select:focus {
 }
 /* Footer */
 .footer {
-  margin-top: 10rem;
   background-color: var(--color-primary-dark);
   color: var(--color-highlight-silver);
 }

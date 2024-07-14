@@ -1,5 +1,5 @@
 // Components
-import Nav from "./Nav";
+import Navbar from "./Navbar";
 // Icons
 import {
   FaFacebook,
@@ -15,7 +15,7 @@ function Footer() {
         <div className='footer__image' />
         <div className='footer__nav'>
           <h3>Little Lemon</h3>
-          <Nav />
+          <Navbar />
         </div>
         <div className='footer__contact'>
           <h3>Contact</h3>

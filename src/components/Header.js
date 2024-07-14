@@ -1,12 +1,12 @@
 // Components
 import Logo from "./Logo";
-import Nav from "./Nav";
+import Navbar from "./Navbar";
 
 function Header() {
   return (
     <header className='header'>
       <Logo />
-      <Nav />
+      <Navbar />
     </header>
   );
 }

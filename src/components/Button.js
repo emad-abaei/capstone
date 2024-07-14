@@ -1,8 +1,10 @@
 import React from "react";
 
-function Button({ children, type }) {
+function Button({ children, type, onClick }) {
   return (
-    <button className={`${type === "delivery" ? "delivery" : ""}`}>
+    <button
+      className={`${type === "delivery" ? "delivery" : ""}`}
+      onClick={onClick}>
       {children}
     </button>
   );

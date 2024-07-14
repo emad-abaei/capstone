@@ -28,6 +28,7 @@
 }
 html {
   font-size: 62.6%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -209,7 +210,7 @@ select:focus {
 
   position: absolute;
   right: 0;
-  top: 2rem;
+  top: 8rem;
 
   background-image: url("../public/assets/images/restaurantfood.jpg");
   background-size: cover;
@@ -242,6 +243,7 @@ select:focus {
 
 .specials__header {
   margin: 8rem 0;
+  padding-top: 9rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

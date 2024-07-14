@@ -1,18 +1,9 @@
-import About from "./About";
-import Container from "./Container";
-import Hero from "./Hero";
-import Specials from "./Specials";
-import Testimonials from "./Testimonials";
+import { Outlet } from "react-router-dom";
 
 function Main() {
   return (
     <main className='main'>
-      <Hero />
-      <Container>
-        <Specials />
-        <Testimonials />
-        <About />
-      </Container>
+      <Outlet />
     </main>
   );
 }

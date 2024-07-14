@@ -47,10 +47,6 @@ select {
   color: inherit;
 }
 
-button {
-  cursor: pointer;
-}
-
 *:disabled {
   cursor: not-allowed;
 }
@@ -122,9 +118,11 @@ button {
   background-color: var(--color-primary-light);
   border-radius: var(--border-radius-lg);
   transition: 0.25s all ease-in-out;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -136,6 +134,7 @@ button.delivery {
   margin-top: auto;
   padding: 0;
   background-color: transparent;
+  justify-content: flex-start;
 }
 
 button.delivery:hover {
@@ -147,6 +146,10 @@ button:focus,
 textarea:focus,
 select:focus {
   outline: none;
+}
+
+.littleLemon {
+  color: var(--color-primary-light);
 }
 
 .app-layout {
@@ -443,8 +446,35 @@ select:focus {
   gap: 2rem;
 }
 
-form {
+/* Form */
+.booking {
+  margin-top: 2rem;
+
   display: grid;
-  max-width: 200px;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.booking__form {
+  max-width: 30rem;
+
+  display: grid;
+  gap: 1rem;
+}
+
+.booking__form input,
+.booking__form select {
+  padding: 1rem;
+  border: 1px solid crimson;
+  border-color: var(--color-highlight-silver);
+  border-radius: var(--border-radius-lg);
+}
+
+.booking__form button {
+  text-align: center;
+}
+
+.booking__confirmation {
+  padding: 1rem;
+  background-color: var(--color-highlight-silver);
+  border-radius: var(--border-radius-lg);
 }

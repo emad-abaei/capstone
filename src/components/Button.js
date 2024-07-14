@@ -1,8 +1,9 @@
-function Button({ children, type, onClick }) {
+function Button({ children, type, onClick, disabled }) {
   return (
     <button
       className={`${type === "delivery" ? "delivery" : ""}`}
-      onClick={onClick}>
+      onClick={onClick}
+      disabled={disabled}>
       {children}
     </button>
   );

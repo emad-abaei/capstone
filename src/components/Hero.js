@@ -15,7 +15,6 @@ function Hero() {
         <div className='hero__content'>
           <h1>little lemon</h1>
           <h2>chicago</h2>
-          <h2>{10 + 10}</h2>
           <p>
             We are a fimily owned Mediterranean restaurant, focused on
             traditional recipes served with a modern twist.

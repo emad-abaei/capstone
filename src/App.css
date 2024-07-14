@@ -166,10 +166,14 @@ select:focus {
   align-items: center;
 }
 
-.nav ul {
+.navbar ul {
   display: flex;
   gap: 2rem;
   font-weight: 700;
+}
+
+.navbar a.active {
+  color: var(--color-primary-light);
 }
 
 .main {
@@ -212,7 +216,7 @@ select:focus {
 
   position: absolute;
   right: 0;
-  top: 8rem;
+  top: 2rem;
 
   background-image: url("../public/assets/images/restaurantfood.jpg");
   background-size: cover;
@@ -428,7 +432,7 @@ select:focus {
   flex-direction: column;
 }
 
-.footer ul li a:hover {
+.footer ul li a:hover:not(.active) {
   color: var(--color-highlight-white);
 }
 

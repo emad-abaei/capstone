@@ -1,4 +1,4 @@
-function About() {
+function Chicago() {
   return (
     <section className='about'>
       <div className='about__content'>
@@ -23,4 +23,4 @@ function About() {
   );
 }
 
-export default About;
+export default Chicago;

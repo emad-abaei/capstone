@@ -1,9 +1,9 @@
 // Components
-import About from "../components/About";
+import Chicago from "../components/Chicago";
 import Container from "../components/Container";
 import Hero from "../components/Hero";
 import Specials from "../components/Specials";
-import Testimonials from "../components/Testimonials";
+import CustomersSay from "../components/CustomersSay";
 
 function Homepage() {
   return (
@@ -11,8 +11,8 @@ function Homepage() {
       <Hero />
       <Container>
         <Specials />
-        <Testimonials />
-        <About />
+        <CustomersSay />
+        <Chicago />
       </Container>
     </>
   );

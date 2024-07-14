@@ -3,7 +3,7 @@ import TestimonialItem from "./TestimonialItem";
 // Dummy data
 import { TESTIMONILS_DATA } from "../data/dummyData";
 
-function Testimonials() {
+function CustomersSay() {
   const testimonials = TESTIMONILS_DATA;
 
   return (
@@ -18,4 +18,4 @@ function Testimonials() {
   );
 }
 
-export default Testimonials;
+export default CustomersSay;

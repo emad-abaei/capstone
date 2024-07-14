@@ -1,5 +1,6 @@
-// Components
+// React router
 import { Link, useNavigate } from "react-router-dom";
+// Components
 import Button from "./Button";
 
 function Hero() {

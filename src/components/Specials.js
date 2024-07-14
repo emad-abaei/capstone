@@ -1,3 +1,5 @@
+// React Router
+import { NavLink } from "react-router-dom";
 // Components
 import Button from "./Button";
 import SpecialItem from "./SpecialItem";
@@ -12,7 +14,9 @@ function Specials() {
       <div className='specials__header'>
         <h1>This weeks specials!</h1>
         <div>
-          <Button>Online Menu</Button>
+          <NavLink to='/menu'>
+            <Button>Online Menu</Button>
+          </NavLink>
         </div>
       </div>
       <div className='specials__content'>

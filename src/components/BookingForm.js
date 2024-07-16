@@ -1,8 +1,14 @@
+// React
+import { useState } from "react";
 // Components
 import Button from "./Button";
 
-function BookingForm({ state, dispatch }) {
+function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
+  const times = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const [availableTimes, setAvailableTimes] = useState(times);
+
   function handleDate(e) {
+    availableFinder(e.target.value);
     dispatch({ type: "change_date", payload: e.target.value });
   }
 
@@ -18,17 +24,28 @@ function BookingForm({ state, dispatch }) {
     dispatch({ type: "change_occasion", payload: e.target.value });
   }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatchTimes({
+      type: "update_times",
+      payload: { date: state.date, time: state.time }
+    });
+  }
 
-  //   const newBooking = { date, time, guests, occasion };
-  //   setBook(newBooking);
-  //   console.log(newBooking);
-  // }
+  function availableFinder(newTime) {
+    if (stateTimes) {
+      const tergetdDate = stateTimes.filter((time) => time.date === newTime);
+      const targetTimes = tergetdDate.map((item) => item.time);
+
+      const finalTimes = times.filter((time) => !targetTimes.includes(time));
+
+      setAvailableTimes(finalTimes);
+    }
+  }
 
   return (
     <div className='booking'>
-      <form className='booking__form' onSubmit={() => console.log("submit")}>
+      <form className='booking__form' onSubmit={handleSubmit}>
         <label htmlFor='res-date'>Choose date</label>
         <input
           type='date'
@@ -38,12 +55,17 @@ function BookingForm({ state, dispatch }) {
         />
         <label htmlFor='res-time'>Choose time</label>
         <select id='res-time' value={state.time} onChange={handleTime}>
-          <option value='17:00'>17:00</option>
+          {availableTimes.map((time) => (
+            <option value={time} key={time}>
+              {time}
+            </option>
+          ))}
+          {/* <option value='17:00'>17:00</option>
           <option value='18:00'>18:00</option>
           <option value='19:00'>19:00</option>
           <option value='20:00'>20:00</option>
           <option value='21:00'>21:00</option>
-          <option value='22:00'>22:00</option>
+          <option value='22:00'>22:00</option> */}
         </select>
         <label htmlFor='guests'>Number of guests</label>
         <input

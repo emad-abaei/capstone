@@ -1,50 +1,43 @@
-// React
-import { useState } from "react";
-import BookingConfirmation from "./BookingConfirmation";
 // Components
 import Button from "./Button";
 
-function BookingForm() {
-  const [date, setDate] = useState(null);
-  const [time, setTime] = useState("19:00");
-  const [guests, setGuests] = useState(1);
-  const [occasion, setOccasion] = useState("birthday");
-  const [book, setBook] = useState({});
-
+function BookingForm({ state, dispatch }) {
   function handleDate(e) {
-    setDate(e.target.value);
+    dispatch({ type: "change_date", payload: e.target.value });
   }
 
   function handleTime(e) {
-    setTime(e.target.value);
+    dispatch({ type: "change_time", payload: e.target.value });
   }
 
   function handleGuests(e) {
-    setGuests(e.target.value);
+    dispatch({ type: "change_guests", payload: e.target.value });
   }
 
   function handleOccasion(e) {
-    setOccasion(e.target.value);
+    dispatch({ type: "change_occasion", payload: e.target.value });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(book);
-    setBook({ date, time, guests, occasion });
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+
+  //   const newBooking = { date, time, guests, occasion };
+  //   setBook(newBooking);
+  //   console.log(newBooking);
+  // }
 
   return (
     <div className='booking'>
-      <form className='booking__form' onSubmit={handleSubmit}>
+      <form className='booking__form' onSubmit={() => console.log("submit")}>
         <label htmlFor='res-date'>Choose date</label>
         <input
           type='date'
           id='res-date'
-          value={date ? date : ""}
+          value={state.date ? state.date : ""}
           onChange={handleDate}
         />
         <label htmlFor='res-time'>Choose time</label>
-        <select id='res-time' value={time} onChange={handleTime}>
+        <select id='res-time' value={state.time} onChange={handleTime}>
           <option value='17:00'>17:00</option>
           <option value='18:00'>18:00</option>
           <option value='19:00'>19:00</option>
@@ -59,17 +52,16 @@ function BookingForm() {
           min='1'
           max='10'
           id='guests'
-          value={guests}
+          value={state.guests}
           onChange={handleGuests}
         />
         <label htmlFor='occasion'>Occasion</label>
-        <select id='occasion' value={occasion} onChange={handleOccasion}>
+        <select id='occasion' value={state.occasion} onChange={handleOccasion}>
           <option value='birthday'>Birthday</option>
           <option value='anniversary'>Anniversary</option>
         </select>
         <Button type='lg'>Make Your reservation</Button>
       </form>
-      <BookingConfirmation bookItem={book} />
     </div>
   );
 }

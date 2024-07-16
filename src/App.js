@@ -1,3 +1,5 @@
+// React
+import { useReducer } from "react";
 // React router
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 // Components
@@ -9,14 +11,44 @@ import LoginPage from "./pages/LoginPage";
 // Styles
 import "./App.css";
 
+const initialState = {
+  date: null,
+  time: "19:00",
+  guests: "1",
+  occasion: "birthday"
+};
+
+function bookingReducer(state, action) {
+  switch (action.type) {
+    case "change_date":
+      return { ...state, date: action.payload };
+
+    case "change_time":
+      return { ...state, time: action.payload };
+
+    case "change_guests":
+      return { ...state, guests: action.payload };
+
+    case "change_occasion":
+      return { ...state, occasion: action.payload };
+
+    default:
+      return state;
+  }
+}
+
 function App() {
+  const [state, dispatch] = useReducer(bookingReducer, initialState);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<Navigate replace to='homepage' />}></Route>
           <Route path='homepage' element={<Homepage />}></Route>
-          <Route path='booking' element={<BookingPage />}></Route>
+          <Route
+            path='booking'
+            element={<BookingPage state={state} dispatch={dispatch} />}></Route>
           <Route path='menu' element={<MenuPage />}></Route>
           <Route path='login' element={<LoginPage />}></Route>
         </Route>

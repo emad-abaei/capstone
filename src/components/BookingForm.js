@@ -26,10 +26,13 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     dispatchTimes({
       type: "update_times",
       payload: { date: state.date, time: state.time }
     });
+
+    dispatch({ type: "reset" });
   }
 
   function availableFinder(newTime) {
@@ -38,6 +41,7 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
       const targetTimes = tergetdDate.map((item) => item.time);
 
       const finalTimes = times.filter((time) => !targetTimes.includes(time));
+      console.log(finalTimes);
 
       setAvailableTimes(finalTimes);
     }
@@ -50,22 +54,26 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
         <input
           type='date'
           id='res-date'
+          placeholder='choose date first'
           value={state.date ? state.date : ""}
           onChange={handleDate}
         />
         <label htmlFor='res-time'>Choose time</label>
-        <select id='res-time' value={state.time} onChange={handleTime}>
+        <select
+          id='res-time'
+          value={state.time}
+          onChange={handleTime}
+          disabled={!state.date}>
+          <option value=''>
+            {availableTimes.length
+              ? "Please choose a time"
+              : "No available time fot this day"}{" "}
+          </option>
           {availableTimes.map((time) => (
             <option value={time} key={time}>
               {time}
             </option>
           ))}
-          {/* <option value='17:00'>17:00</option>
-          <option value='18:00'>18:00</option>
-          <option value='19:00'>19:00</option>
-          <option value='20:00'>20:00</option>
-          <option value='21:00'>21:00</option>
-          <option value='22:00'>22:00</option> */}
         </select>
         <label htmlFor='guests'>Number of guests</label>
         <input

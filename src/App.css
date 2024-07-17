@@ -45,6 +45,7 @@ textarea,
 select {
   font: inherit;
   color: inherit;
+  font-size: 1.4rem;
 }
 
 *:disabled {

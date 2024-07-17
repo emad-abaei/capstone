@@ -12,8 +12,8 @@ import LoginPage from "./pages/LoginPage";
 import "./App.css";
 
 const initialState = {
-  date: null,
-  time: "19:00",
+  date: "",
+  time: "",
   guests: "1",
   occasion: "birthday"
 };
@@ -31,6 +31,9 @@ function bookingReducer(state, action) {
 
     case "change_occasion":
       return { ...state, occasion: action.payload };
+
+    case "reset":
+      return initialState;
 
     default:
       return state;

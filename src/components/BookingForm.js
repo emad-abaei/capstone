@@ -1,5 +1,6 @@
 // React
 import { useState } from "react";
+import { getToday } from "../utils/helper";
 // Components
 import Button from "./Button";
 
@@ -47,6 +48,8 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
     }
   }
 
+  const today = getToday();
+
   return (
     <div className='booking'>
       <form className='booking__form' onSubmit={handleSubmit}>
@@ -54,16 +57,19 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
         <input
           type='date'
           id='res-date'
+          min={today}
           placeholder='choose date first'
           value={state.date ? state.date : ""}
           onChange={handleDate}
+          required
         />
         <label htmlFor='res-time'>Choose time</label>
         <select
           id='res-time'
           value={state.time}
           onChange={handleTime}
-          disabled={!state.date}>
+          disabled={!state.date}
+          required>
           <option value=''>
             {availableTimes.length
               ? "Please choose a time"

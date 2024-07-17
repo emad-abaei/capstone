@@ -58,17 +58,16 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
           type='date'
           id='res-date'
           min={today}
-          placeholder='choose date first'
-          value={state.date ? state.date : ""}
+          value={state?.date ? state.date : ""}
           onChange={handleDate}
           required
         />
         <label htmlFor='res-time'>Choose time</label>
         <select
           id='res-time'
-          value={state.time}
+          value={state?.time}
           onChange={handleTime}
-          disabled={!state.date}
+          disabled={!state?.date}
           required>
           <option value=''>
             {availableTimes.length
@@ -88,11 +87,11 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
           min='1'
           max='10'
           id='guests'
-          value={state.guests}
+          value={state?.guests}
           onChange={handleGuests}
         />
         <label htmlFor='occasion'>Occasion</label>
-        <select id='occasion' value={state.occasion} onChange={handleOccasion}>
+        <select id='occasion' value={state?.occasion} onChange={handleOccasion}>
           <option value='birthday'>Birthday</option>
           <option value='anniversary'>Anniversary</option>
         </select>

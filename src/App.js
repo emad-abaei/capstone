@@ -44,7 +44,6 @@ const initializeTimes = [];
 
 function updateTimes(state, action) {
   if (action.type === "update_times") {
-    // console.log(action.payload);
     return [...state, action.payload];
   }
 }

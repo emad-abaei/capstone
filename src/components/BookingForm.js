@@ -1,16 +1,25 @@
 // React
 import { useState } from "react";
-import { getToday } from "../utils/helper";
 // Components
 import Button from "./Button";
+// Utils
+import { getToday } from "../utils/helper";
 
 function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
   const times = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   const [availableTimes, setAvailableTimes] = useState(times);
 
+  // function handleDate(e) {
+  //   const date = e.target.value;
+  //   availableFinder(date);
+  //   dispatch({ type: "change_date", payload: date });
+  // }
+
   function handleDate(e) {
-    availableFinder(e.target.value);
-    dispatch({ type: "change_date", payload: e.target.value });
+    const date = e.target.value;
+    console.log("Date selected:", date);
+    availableFinder(date);
+    dispatch({ type: "change_date", payload: date });
   }
 
   function handleTime(e) {
@@ -42,7 +51,7 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
       const targetTimes = tergetdDate.map((item) => item.time);
 
       const finalTimes = times.filter((time) => !targetTimes.includes(time));
-      console.log(finalTimes);
+      // console.log(finalTimes);
 
       setAvailableTimes(finalTimes);
     }
@@ -57,14 +66,17 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
         <input
           type='date'
           id='res-date'
+          data-testid='res-date'
           min={today}
-          value={state?.date ? state.date : ""}
+          value={state?.date}
+          // value={state?.date ? state.date : ""}
           onChange={handleDate}
           required
         />
         <label htmlFor='res-time'>Choose time</label>
         <select
           id='res-time'
+          data-testid='res-time'
           value={state?.time}
           onChange={handleTime}
           disabled={!state?.date}

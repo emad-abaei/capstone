@@ -4,15 +4,16 @@ import { useState } from "react";
 import Button from "./Button";
 // Utils
 import { fetchAPI, getToday, submitAPI } from "../utils/helper";
+import { useNavigate } from "react-router-dom";
 
 function BookingForm({ state, dispatch }) {
   const [availableTimes, setAvailableTimes] = useState([]);
+  const navigate = useNavigate();
+  const today = getToday();
 
   function handleDate(e) {
     const date = e.target.value;
-
     dispatch({ type: "change_date", payload: date });
-
     initializeTimes(date);
   }
 
@@ -41,21 +42,21 @@ function BookingForm({ state, dispatch }) {
 
     console.log(newBooking);
 
-    // API
-    const submitRes = submitAPI(newBooking);
-    console.log(submitRes);
-
+    submitForm(newBooking);
     setAvailableTimes([]);
-
     dispatch({ type: "reset" });
   }
-
-  const today = getToday();
 
   function initializeTimes(date) {
     // API
     const fetchAvailableTimes = fetchAPI(new Date(date));
     setAvailableTimes(fetchAvailableTimes);
+  }
+
+  function submitForm(newBooking) {
+    // API
+    const submitResponse = submitAPI(newBooking);
+    submitResponse && navigate("/confirmation");
   }
 
   return (

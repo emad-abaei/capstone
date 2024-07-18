@@ -17,7 +17,7 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
 
   function handleDate(e) {
     const date = e.target.value;
-    console.log("Date selected:", date);
+    // console.log("Date selected:", date);
     availableFinder(date);
     dispatch({ type: "change_date", payload: date });
   }

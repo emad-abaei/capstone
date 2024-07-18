@@ -23,7 +23,7 @@ function bookingReducer(state, action) {
     // case "change_date":
     //   return { ...state, date: action.payload };
     case "change_date":
-      console.log("Reducer updating state with:", action.payload);
+      // console.log("Reducer updating state with:", action.payload);
       return { ...state, date: action.payload };
 
     case "change_time":

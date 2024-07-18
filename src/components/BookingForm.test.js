@@ -19,14 +19,3 @@ test("Date input has no value at first", () => {
   const dateInputElement = screen.getByTestId("res-date");
   expect(dateInputElement).toHaveValue("");
 });
-
-// test("Date input is changed", async () => {
-//   render(<BookingForm />);
-//   const dateInputElement = screen.getByTestId("res-date");
-
-//   fireEvent.change(dateInputElement, { target: { value: "2025-05-24" } });
-
-//   await waitFor(() => {
-//     expect(dateInputElement.value).toBe("2025-05-24");
-//   });
-// });

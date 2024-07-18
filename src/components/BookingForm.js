@@ -9,15 +9,8 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
   const times = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   const [availableTimes, setAvailableTimes] = useState(times);
 
-  // function handleDate(e) {
-  //   const date = e.target.value;
-  //   availableFinder(date);
-  //   dispatch({ type: "change_date", payload: date });
-  // }
-
   function handleDate(e) {
     const date = e.target.value;
-    // console.log("Date selected:", date);
     availableFinder(date);
     dispatch({ type: "change_date", payload: date });
   }
@@ -51,7 +44,6 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
       const targetTimes = tergetdDate.map((item) => item.time);
 
       const finalTimes = times.filter((time) => !targetTimes.includes(time));
-      // console.log(finalTimes);
 
       setAvailableTimes(finalTimes);
     }
@@ -69,7 +61,6 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
           data-testid='res-date'
           min={today}
           value={state?.date}
-          // value={state?.date ? state.date : ""}
           onChange={handleDate}
           required
         />

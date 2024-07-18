@@ -3,15 +3,17 @@ import { useState } from "react";
 // Components
 import Button from "./Button";
 // Utils
-import { getToday } from "../utils/helper";
+import { fetchAPI, getToday, submitAPI } from "../utils/helper";
 
 function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
-  const times = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-  const [availableTimes, setAvailableTimes] = useState(times);
+  const [availableTimes, setAvailableTimes] = useState([]);
 
   function handleDate(e) {
     const date = e.target.value;
-    availableFinder(date);
+
+    const fetchAvailableTimes = fetchAPI(new Date(date));
+    setAvailableTimes(fetchAvailableTimes);
+
     dispatch({ type: "change_date", payload: date });
   }
 
@@ -30,23 +32,18 @@ function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatchTimes({
-      type: "update_times",
-      payload: { date: state.date, time: state.time }
-    });
+    const newBooking = {
+      date: state.date,
+      time: state.time,
+      numberOfGuests: state.guests,
+      occasion: state.occasion
+    };
+    console.log(newBooking);
+
+    const submitRes = submitAPI(newBooking);
+    console.log(submitRes);
 
     dispatch({ type: "reset" });
-  }
-
-  function availableFinder(newTime) {
-    if (stateTimes) {
-      const tergetdDate = stateTimes.filter((time) => time.date === newTime);
-      const targetTimes = tergetdDate.map((item) => item.time);
-
-      const finalTimes = times.filter((time) => !targetTimes.includes(time));
-
-      setAvailableTimes(finalTimes);
-    }
   }
 
   const today = getToday();

@@ -5,7 +5,7 @@ import Button from "./Button";
 // Utils
 import { fetchAPI, getToday, submitAPI } from "../utils/helper";
 
-function BookingForm({ state, dispatch, stateTimes, dispatchTimes }) {
+function BookingForm({ state, dispatch }) {
   const [availableTimes, setAvailableTimes] = useState([]);
 
   function handleDate(e) {

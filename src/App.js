@@ -40,19 +40,8 @@ function bookingReducer(state, action) {
   }
 }
 
-const initializeTimes = [];
-
-function updateTimes(state, action) {
-  if (action.type === "update_times") {
-    return [...state, action.payload];
-  }
-
-  return state;
-}
-
 function App() {
   const [state, dispatch] = useReducer(bookingReducer, initialState);
-  const [stateTimes, dispatchTimes] = useReducer(updateTimes, initializeTimes);
 
   return (
     <BrowserRouter>
@@ -62,14 +51,7 @@ function App() {
           <Route path='homepage' element={<Homepage />}></Route>
           <Route
             path='booking'
-            element={
-              <BookingPage
-                state={state}
-                dispatch={dispatch}
-                stateTimes={stateTimes}
-                dispatchTimes={dispatchTimes}
-              />
-            }></Route>
+            element={<BookingPage state={state} dispatch={dispatch} />}></Route>
           <Route path='menu' element={<MenuPage />}></Route>
           <Route path='login' element={<LoginPage />}></Route>
         </Route>

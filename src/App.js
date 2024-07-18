@@ -2,12 +2,14 @@
 import { useReducer } from "react";
 // React router
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-// Components
-import AppLayout from "./components/AppLayout";
+// Pages
 import BookingPage from "./pages/BookingPage";
 import Homepage from "./pages/Homepage";
 import MenuPage from "./pages/MenuPage";
 import LoginPage from "./pages/LoginPage";
+import ConfirmationPage from "./pages/ConfirmationPage";
+// Components
+import AppLayout from "./components/AppLayout";
 // Styles
 import "./App.css";
 
@@ -52,6 +54,7 @@ function App() {
           <Route
             path='booking'
             element={<BookingPage state={state} dispatch={dispatch} />}></Route>
+          <Route path='confirmation' element={<ConfirmationPage />}></Route>
           <Route path='menu' element={<MenuPage />}></Route>
           <Route path='login' element={<LoginPage />}></Route>
         </Route>

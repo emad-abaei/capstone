@@ -11,10 +11,9 @@ function BookingForm({ state, dispatch }) {
   function handleDate(e) {
     const date = e.target.value;
 
-    const fetchAvailableTimes = fetchAPI(new Date(date));
-    setAvailableTimes(fetchAvailableTimes);
-
     dispatch({ type: "change_date", payload: date });
+
+    initializeTimes(date);
   }
 
   function handleTime(e) {
@@ -33,20 +32,31 @@ function BookingForm({ state, dispatch }) {
     e.preventDefault();
 
     const newBooking = {
+      id: Date.now().toString(),
       date: state.date,
       time: state.time,
       numberOfGuests: state.guests,
       occasion: state.occasion
     };
+
     console.log(newBooking);
 
+    // API
     const submitRes = submitAPI(newBooking);
     console.log(submitRes);
+
+    setAvailableTimes([]);
 
     dispatch({ type: "reset" });
   }
 
   const today = getToday();
+
+  function initializeTimes(date) {
+    // API
+    const fetchAvailableTimes = fetchAPI(new Date(date));
+    setAvailableTimes(fetchAvailableTimes);
+  }
 
   return (
     <div className='booking'>
@@ -70,9 +80,7 @@ function BookingForm({ state, dispatch }) {
           disabled={!state?.date}
           required>
           <option value=''>
-            {availableTimes.length
-              ? "Please choose a time"
-              : "No available time fot this day"}{" "}
+            {availableTimes.length ? "Choose a time" : "Select a date first"}{" "}
           </option>
           {availableTimes.map((time) => (
             <option value={time} key={time}>

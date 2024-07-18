@@ -1,13 +1,18 @@
-// React
-import { useState } from "react";
+// React Router
+import { useNavigate } from "react-router-dom";
 // Components
 import Button from "./Button";
 // Utils
-import { fetchAPI, getToday, submitAPI } from "../utils/helper";
-import { useNavigate } from "react-router-dom";
+import { getToday } from "../utils/helper";
 
-function BookingForm({ state, dispatch }) {
-  const [availableTimes, setAvailableTimes] = useState([]);
+function BookingForm({
+  state,
+  dispatch,
+  availableTimes,
+  setAvailableTimes,
+  initializeTimes,
+  submitForm
+}) {
   const navigate = useNavigate();
   const today = getToday();
 
@@ -42,21 +47,11 @@ function BookingForm({ state, dispatch }) {
 
     console.log(newBooking);
 
-    submitForm(newBooking);
+    const submitResponse = submitForm(newBooking);
+
+    submitResponse && navigate("/confirmation");
     setAvailableTimes([]);
     dispatch({ type: "reset" });
-  }
-
-  function initializeTimes(date) {
-    // API
-    const fetchAvailableTimes = fetchAPI(new Date(date));
-    setAvailableTimes(fetchAvailableTimes);
-  }
-
-  function submitForm(newBooking) {
-    // API
-    const submitResponse = submitAPI(newBooking);
-    submitResponse && navigate("/confirmation");
   }
 
   return (
@@ -81,9 +76,9 @@ function BookingForm({ state, dispatch }) {
           disabled={!state?.date}
           required>
           <option value=''>
-            {availableTimes.length ? "Choose a time" : "Select a date first"}{" "}
+            {availableTimes?.length ? "Choose a time" : "Select a date first"}{" "}
           </option>
-          {availableTimes.map((time) => (
+          {availableTimes?.map((time) => (
             <option value={time} key={time}>
               {time}
             </option>

@@ -1,5 +1,5 @@
 // React
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 // React router
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 // Pages
@@ -10,6 +10,8 @@ import LoginPage from "./pages/LoginPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 // Components
 import AppLayout from "./components/AppLayout";
+// Utils
+import { fetchAPI, submitAPI } from "../src/utils/helper";
 // Styles
 import "./App.css";
 
@@ -44,6 +46,17 @@ function bookingReducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(bookingReducer, initialState);
+  const [availableTimes, setAvailableTimes] = useState([]);
+
+  function initializeTimes(date) {
+    const fetchAvailableTimes = fetchAPI(new Date(date));
+    setAvailableTimes(fetchAvailableTimes);
+  }
+
+  function submitForm(newBooking) {
+    const submitResponse = submitAPI(newBooking);
+    return submitResponse;
+  }
 
   return (
     <BrowserRouter>
@@ -53,7 +66,16 @@ function App() {
           <Route path='homepage' element={<Homepage />}></Route>
           <Route
             path='booking'
-            element={<BookingPage state={state} dispatch={dispatch} />}></Route>
+            element={
+              <BookingPage
+                state={state}
+                dispatch={dispatch}
+                availableTimes={availableTimes}
+                setAvailableTimes={setAvailableTimes}
+                initializeTimes={initializeTimes}
+                submitForm={submitForm}
+              />
+            }></Route>
           <Route path='confirmation' element={<ConfirmationPage />}></Route>
           <Route path='menu' element={<MenuPage />}></Route>
           <Route path='login' element={<LoginPage />}></Route>

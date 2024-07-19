@@ -1,6 +1,10 @@
+// React
 import { useState } from "react";
+// React Router
 import { useNavigate } from "react-router-dom";
+// Components
 import Button from "./Button";
+// Utils
 import { getToday } from "../utils/helper";
 
 export function BookingForm({
@@ -23,30 +27,23 @@ export function BookingForm({
   });
 
   function validateDate(date) {
-    if (!date) {
-      return "Date is required.";
-    }
+    if (!date) return "Date is required.";
     return "";
   }
 
   function validateTime(time) {
-    if (!time) {
-      return "Time is required.";
-    }
+    if (!time) return "Time is required.";
     return "";
   }
 
   function validateGuests(guests) {
-    if (!guests || guests < 1 || guests > 10) {
+    if (!guests || guests < 1 || guests > 10)
       return "Number of guests must be between 1 and 10.";
-    }
     return "";
   }
 
   function validateOccasion(occasion) {
-    if (!occasion) {
-      return "Occasion is required.";
-    }
+    if (!occasion) return "Occasion is required.";
     return "";
   }
 
@@ -166,7 +163,7 @@ export function BookingForm({
         </select>
         {errors.occasion && <p className='error'>{errors.occasion}</p>}
 
-        <Button type='lg'>Make Your reservation</Button>
+        <Button type='lg'>Make Your Reservation</Button>
       </form>
     </div>
   );

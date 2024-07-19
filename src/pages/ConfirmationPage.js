@@ -2,10 +2,10 @@
 import Container from "../components/Container";
 import ConfirmedBooking from "../components/ConfirmedBooking";
 
-function ConfirmationPage() {
+function ConfirmationPage({ confirmedBooking }) {
   return (
     <Container>
-      <ConfirmedBooking />
+      <ConfirmedBooking confirmedBooking={confirmedBooking} />
     </Container>
   );
 }

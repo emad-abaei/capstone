@@ -477,11 +477,40 @@ select:focus {
 }
 
 .booking__form button {
+  margin-top: 1rem;
   text-align: center;
 }
-
 .booking__confirmation {
-  padding: 1rem;
+  max-width: 30rem;
+  padding: 2rem;
   background-color: var(--color-highlight-silver);
   border-radius: var(--border-radius-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.booking__confirmation p {
+  /* margin: 1rem 0; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking__confirmation p:last-child {
+  justify-content: center;
+  color: var(--color-secondary-dark);
+}
+
+.booking__confirmation p span:first-child {
+  font-weight: 600;
+}
+
+.booking__confirmation p span:last-child {
+  text-transform: capitalize;
+}
+
+.booking__Link {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }

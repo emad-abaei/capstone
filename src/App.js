@@ -47,6 +47,7 @@ function bookingReducer(state, action) {
 function App() {
   const [state, dispatch] = useReducer(bookingReducer, initialState);
   const [availableTimes, setAvailableTimes] = useState([]);
+  const [confirmedBooking, setConfirmedBooking] = useState("");
 
   function initializeTimes(date) {
     const fetchAvailableTimes = fetchAPI(new Date(date));
@@ -55,6 +56,8 @@ function App() {
 
   function submitForm(newBooking) {
     const submitResponse = submitAPI(newBooking);
+    console.log(newBooking);
+    setConfirmedBooking(newBooking);
     return submitResponse;
   }
 
@@ -76,7 +79,11 @@ function App() {
                 submitForm={submitForm}
               />
             }></Route>
-          <Route path='confirmation' element={<ConfirmationPage />}></Route>
+          <Route
+            path='confirmation'
+            element={
+              <ConfirmationPage confirmedBooking={confirmedBooking} />
+            }></Route>
           <Route path='menu' element={<MenuPage />}></Route>
           <Route path='login' element={<LoginPage />}></Route>
         </Route>

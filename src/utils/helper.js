@@ -13,6 +13,17 @@ export function getToday() {
   return todayDate;
 }
 
+export function formatDate(date) {
+  const formattedDate = new Date(date).toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+
+  return formattedDate;
+}
+
 // API
 // raw.githubusercontent.com/courseraap/capstone/main/api.js
 const seededRandom = function (seed) {

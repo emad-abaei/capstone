@@ -1,7 +1,11 @@
+// React testing
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
+// React router
 import { MemoryRouter } from "react-router-dom";
+// Components
 import BookingForm from "./BookingForm";
+// Utils
 import { getToday } from "../utils/helper";
 
 // Mock functions

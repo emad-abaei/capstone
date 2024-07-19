@@ -17,6 +17,11 @@
   --border-radius-lg: 1rem;
   --border-radius-xl: 1.5rem;
   --border-radius-full: 50%;
+
+  --screen-xl: 1280px;
+  --screen-lg: 1024px;
+  --screen-md: 768px;
+  --screen-sm: 640px;
 }
 
 *,
@@ -160,9 +165,10 @@ select:focus {
 }
 
 .header {
-  width: 80rem;
+  width: 100%;
+  max-width: var(--screen-lg);
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem;
   background-color: var(--color-highlight-white);
 
   display: flex;
@@ -180,13 +186,22 @@ select:focus {
   color: var(--color-primary-light);
 }
 
+.navMenu {
+  display: none;
+}
+
+.navMenu__icon {
+  cursor: pointer;
+}
+
 .main {
   /* background-color: var(--color-secondary-light); */
 }
 
 .container {
-  width: 80rem;
+  max-width: var(--screen-lg);
   margin: 0 auto;
+  padding: 2rem;
 }
 
 .rate {
@@ -209,9 +224,9 @@ select:focus {
 
 .hero .hero__container {
   position: relative;
-  width: 80rem;
+  max-width: var(--screen-lg);
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem;
 }
 
 .hero .hero__content,
@@ -225,7 +240,7 @@ select:focus {
   border-radius: var(--border-radius-xl);
 
   position: absolute;
-  right: 0;
+  right: 2rem;
   top: 2rem;
 
   background-image: url("../public/assets/images/restaurantfood.jpg");
@@ -418,9 +433,9 @@ select:focus {
 }
 
 .footer__container {
-  width: 80rem;
+  max-width: var(--screen-lg);
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 5rem 2rem;
 
   display: grid;
   grid-template-columns: 25rem repeat(3, 1fr);
@@ -448,8 +463,8 @@ select:focus {
 
 .footer__social-media ul {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr; */
   gap: 2rem;
 }
 
@@ -513,4 +528,28 @@ select:focus {
 .booking__Link {
   color: var(--color-primary-dark);
   text-decoration: underline;
+}
+
+/* RESPONSIVE STYLES */
+@media screen and (max-width: 1024px) {
+  .footer {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header .navbar {
+    display: none;
+  }
+
+  .header .navMenu .navbar {
+    display: block;
+  }
+
+  /* Footer */
+  .footer {
+    display: none;
+  }
+  .footer__container {
+    display: unset;
+  }
 }

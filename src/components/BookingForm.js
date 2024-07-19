@@ -1,6 +1,6 @@
 // React
 import { useState } from "react";
-// React Router
+// React router
 import { useNavigate } from "react-router-dom";
 // Components
 import Button from "./Button";

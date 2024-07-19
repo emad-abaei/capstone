@@ -56,7 +56,6 @@ function App() {
 
   function submitForm(newBooking) {
     const submitResponse = submitAPI(newBooking);
-    console.log(newBooking);
     setConfirmedBooking(newBooking);
     return submitResponse;
   }

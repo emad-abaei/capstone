@@ -5,7 +5,7 @@ import { MdDeliveryDining } from "react-icons/md";
 
 function SpeciatlItem({ item }) {
   return (
-    <div className='specials__item'>
+    <article className='specials__item'>
       <img src={item.image} alt='' />
       <div className='specials__item__content'>
         <div>
@@ -18,7 +18,7 @@ function SpeciatlItem({ item }) {
           <MdDeliveryDining size={25} />
         </Button>
       </div>
-    </div>
+    </article>
   );
 }
 

@@ -9,7 +9,6 @@ function doubleFigure(num) {
 
 export function getToday() {
   const todayDate = `${year}-${doubleFigure(month)}-${doubleFigure(day)}`;
-
   return todayDate;
 }
 

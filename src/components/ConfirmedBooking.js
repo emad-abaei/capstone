@@ -1,7 +1,9 @@
+// React router
+import { Link } from "react-router-dom";
+// Utils
+import { formatDate } from "../utils/helper";
 // Icons
 import { FaRegCheckCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { formatDate } from "../utils/helper";
 
 function ConfirmedBooking({ confirmedBooking }) {
   const { date, time, numberOfGuests, occasion } = confirmedBooking;

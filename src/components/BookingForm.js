@@ -18,7 +18,6 @@ export function BookingForm({
   const navigate = useNavigate();
   const today = getToday();
 
-  // State for validation errors
   const [errors, setErrors] = useState({
     date: "",
     time: "",
@@ -122,8 +121,16 @@ export function BookingForm({
           min={today}
           value={state?.date}
           onChange={handleDate}
+          aria-label='Choose date'
+          aria-required='true'
+          aria-invalid={!!errors.date}
+          aria-describedby={errors.date ? "date-error" : undefined}
         />
-        {errors.date && <p className='error'>{errors.date}</p>}
+        {errors.date && (
+          <p id='date-error' className='error' aria-live='assertive'>
+            {errors.date}
+          </p>
+        )}
 
         <label htmlFor='res-time'>Choose time</label>
         <select
@@ -131,7 +138,13 @@ export function BookingForm({
           data-testid='res-time'
           value={state?.time}
           onChange={handleTime}
-          disabled={!state?.date}>
+          aria-label='Choose time'
+          aria-required='true'
+          aria-disabled={!state?.date}
+          aria-invalid={!!errors.time}
+          aria-describedby={errors.time ? "time-error" : undefined}
+          disabled={!state?.date}
+          required>
           <option value=''>
             {availableTimes?.length ? "Choose a time" : "Select a date first"}{" "}
           </option>
@@ -141,7 +154,11 @@ export function BookingForm({
             </option>
           ))}
         </select>
-        {errors.time && <p className='error'>{errors.time}</p>}
+        {errors.time && (
+          <p id='time-error' className='error' aria-live='assertive'>
+            {errors.time}
+          </p>
+        )}
 
         <label htmlFor='guests'>Number of guests</label>
         <input
@@ -152,18 +169,38 @@ export function BookingForm({
           id='guests'
           value={state?.guests}
           onChange={handleGuests}
+          aria-label='Number of guests'
+          aria-required='true'
+          aria-invalid={!!errors.guests}
+          aria-describedby={errors.guests ? "guests-error" : undefined}
+          aria-live='polite'
         />
-        {errors.guests && <p className='error'>{errors.guests}</p>}
+        {errors.guests && (
+          <p id='guests-error' className='error' aria-live='assertive'>
+            {errors.guests}
+          </p>
+        )}
 
         <label htmlFor='occasion'>Occasion</label>
-        <select id='occasion' value={state?.occasion} onChange={handleOccasion}>
+        <select
+          id='occasion'
+          value={state?.occasion}
+          onChange={handleOccasion}
+          aria-label='Occasion'
+          aria-required='true'
+          aria-invalid={!!errors.occasion}
+          aria-describedby={errors.occasion ? "occasion-error" : undefined}>
           <option value=''>Select an occasion</option>
           <option value='birthday'>Birthday</option>
           <option value='anniversary'>Anniversary</option>
         </select>
-        {errors.occasion && <p className='error'>{errors.occasion}</p>}
+        {errors.occasion && (
+          <p id='occasion-error' className='error' aria-live='assertive'>
+            {errors.occasion}
+          </p>
+        )}
 
-        <Button type='lg'>Make Your Reservation</Button>
+        <Button type='lg'>Make Your reservation</Button>
       </form>
     </div>
   );

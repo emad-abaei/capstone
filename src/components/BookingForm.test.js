@@ -1,15 +1,35 @@
 import "@testing-library/jest-dom";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import BookingForm from "./BookingForm";
+import { getToday } from "../utils/helper";
 
-import React from "react";
-import userEvent from "@testing-library/user-event";
+// Mock functions
+const mockDispatch = jest.fn();
+const mockSubmitForm = jest.fn();
+const mockInitializeTimes = jest.fn();
+const mockSetAvailableTimes = jest.fn();
 
-const renderBookingForm = () =>
+const initialState = {
+  date: "",
+  time: "",
+  guests: "",
+  occasion: ""
+};
+
+const availableTimes = ["18:00", "19:00", "20:00"];
+
+const renderBookingForm = (state = initialState) =>
   render(
     <MemoryRouter>
-      <BookingForm />
+      <BookingForm
+        state={state}
+        dispatch={mockDispatch}
+        availableTimes={availableTimes}
+        setAvailableTimes={mockSetAvailableTimes}
+        initializeTimes={mockInitializeTimes}
+        submitForm={mockSubmitForm}
+      />
     </MemoryRouter>
   );
 
@@ -29,4 +49,104 @@ test("Date input has no value at first", () => {
   renderBookingForm();
   const dateInputElement = screen.getByTestId("res-date");
   expect(dateInputElement).toHaveValue("");
+});
+
+test("Shows error message when date is not provided", () => {
+  renderBookingForm();
+  fireEvent.click(screen.getByText("Make Your reservation"));
+  const errorMessage = screen.getByText("Date is required.");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+test("Shows error message when time is not provided", () => {
+  renderBookingForm({ ...initialState, date: getToday() });
+  fireEvent.change(screen.getByTestId("res-date"), {
+    target: { value: getToday() }
+  });
+  fireEvent.click(screen.getByText("Make Your reservation"));
+  const errorMessage = screen.getByText("Time is required.");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+test("Shows error message when guests are out of range", () => {
+  renderBookingForm({ ...initialState, date: getToday(), time: "18:00" });
+  fireEvent.change(screen.getByTestId("res-date"), {
+    target: { value: getToday() }
+  });
+  fireEvent.change(screen.getByTestId("res-time"), {
+    target: { value: "18:00" }
+  });
+  fireEvent.change(screen.getByLabelText("Number of guests"), {
+    target: { value: "0" }
+  });
+  fireEvent.click(screen.getByText("Make Your reservation"));
+  const errorMessage = screen.getByText(
+    "Number of guests must be between 1 and 10."
+  );
+  expect(errorMessage).toBeInTheDocument();
+});
+
+test("Shows error message when occasion is not provided", () => {
+  renderBookingForm({
+    ...initialState,
+    date: getToday(),
+    time: "18:00",
+    guests: 2
+  });
+  fireEvent.change(screen.getByTestId("res-date"), {
+    target: { value: getToday() }
+  });
+  fireEvent.change(screen.getByTestId("res-time"), {
+    target: { value: "18:00" }
+  });
+  fireEvent.change(screen.getByLabelText("Number of guests"), {
+    target: { value: "2" }
+  });
+  fireEvent.click(screen.getByText("Make Your reservation"));
+  const errorMessage = screen.getByText("Occasion is required.");
+  expect(errorMessage).toBeInTheDocument();
+});
+
+test("Submits form with valid data", () => {
+  mockSubmitForm.mockReturnValue(true);
+
+  renderBookingForm({
+    ...initialState,
+    date: getToday(),
+    time: "18:00",
+    guests: 2,
+    occasion: "birthday"
+  });
+  fireEvent.change(screen.getByTestId("res-date"), {
+    target: { value: getToday() }
+  });
+  fireEvent.change(screen.getByTestId("res-time"), {
+    target: { value: "18:00" }
+  });
+  fireEvent.change(screen.getByLabelText("Number of guests"), {
+    target: { value: "2" }
+  });
+  fireEvent.change(screen.getByLabelText("Occasion"), {
+    target: { value: "birthday" }
+  });
+
+  fireEvent.click(screen.getByText("Make Your reservation"));
+
+  expect(mockSubmitForm).toHaveBeenCalledWith({
+    id: expect.any(String),
+    date: getToday(),
+    time: "18:00",
+    numberOfGuests: 2,
+    occasion: "birthday"
+  });
+  expect(mockDispatch).toHaveBeenCalledWith({ type: "reset" });
+  expect(mockSetAvailableTimes).toHaveBeenCalledWith([]);
+});
+
+test("Initializes times when date is selected", () => {
+  renderBookingForm();
+  fireEvent.change(screen.getByTestId("res-date"), {
+    target: { value: getToday() }
+  });
+  expect(mockInitializeTimes).toHaveBeenCalledWith(getToday());
 });

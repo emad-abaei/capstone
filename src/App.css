@@ -196,6 +196,12 @@ select:focus {
   gap: 0.4rem;
 }
 
+.error {
+  font-size: 1.4rem;
+  color: crimson;
+  text-align: right;
+}
+
 /* Hero section */
 .hero {
   background-color: var(--color-primary-dark);
@@ -449,7 +455,7 @@ select:focus {
 
 /* Form */
 .booking {
-  margin-top: 2rem;
+  margin: 2rem 0 3rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr;

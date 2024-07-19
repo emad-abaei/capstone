@@ -1,7 +1,10 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import BookingForm from "./BookingForm";
+
+import React from "react";
+import userEvent from "@testing-library/user-event";
 
 const renderBookingForm = () =>
   render(

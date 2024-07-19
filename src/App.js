@@ -18,8 +18,8 @@ import "./App.css";
 const initialState = {
   date: "",
   time: "",
-  guests: "1",
-  occasion: "birthday"
+  guests: "",
+  occasion: ""
 };
 
 function bookingReducer(state, action) {

@@ -57,7 +57,7 @@ test("Date input has no value at first", () => {
 
 test("Shows error message when date is not provided", () => {
   renderBookingForm();
-  fireEvent.click(screen.getByText("Make Your reservation"));
+  fireEvent.click(screen.getByText("Make Your Reservation"));
   const errorMessage = screen.getByText("Date is required.");
   expect(errorMessage).toBeInTheDocument();
 });
@@ -67,7 +67,7 @@ test("Shows error message when time is not provided", () => {
   fireEvent.change(screen.getByTestId("res-date"), {
     target: { value: getToday() }
   });
-  fireEvent.click(screen.getByText("Make Your reservation"));
+  fireEvent.click(screen.getByText("Make Your Reservation"));
   const errorMessage = screen.getByText("Time is required.");
   expect(errorMessage).toBeInTheDocument();
 });
@@ -83,7 +83,7 @@ test("Shows error message when guests are out of range", () => {
   fireEvent.change(screen.getByLabelText("Number of guests"), {
     target: { value: "0" }
   });
-  fireEvent.click(screen.getByText("Make Your reservation"));
+  fireEvent.click(screen.getByText("Make Your Reservation"));
   const errorMessage = screen.getByText(
     "Number of guests must be between 1 and 10."
   );
@@ -106,7 +106,7 @@ test("Shows error message when occasion is not provided", () => {
   fireEvent.change(screen.getByLabelText("Number of guests"), {
     target: { value: "2" }
   });
-  fireEvent.click(screen.getByText("Make Your reservation"));
+  fireEvent.click(screen.getByText("Make Your Reservation"));
   const errorMessage = screen.getByText("Occasion is required.");
   expect(errorMessage).toBeInTheDocument();
 });
@@ -134,7 +134,7 @@ test("Submits form with valid data", () => {
     target: { value: "birthday" }
   });
 
-  fireEvent.click(screen.getByText("Make Your reservation"));
+  fireEvent.click(screen.getByText("Make Your Reservation"));
 
   expect(mockSubmitForm).toHaveBeenCalledWith({
     id: expect.any(String),

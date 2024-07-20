@@ -157,15 +157,6 @@ select:focus {
   z-index: 1;
 }
 
-@keyframes headerTrans {
-  from {
-    transform: translateY(-100px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
 .header.fixed {
   position: fixed;
   top: 0;
@@ -221,11 +212,9 @@ select:focus {
   text-align: right;
 }
 
-/* Hero section */
 .hero {
   position: relative;
   background-color: var(--color-primary-dark);
-  /* z-index: -1; */
 }
 
 .hero .hero__container {
@@ -272,7 +261,6 @@ select:focus {
   color: var(--color-highlight-silver);
 }
 
-/* Specials section */
 .specials {
   margin-bottom: 8rem;
 }
@@ -341,7 +329,6 @@ select:focus {
   flex-grow: 1;
 }
 
-/* Testimonials section */
 .testimonials {
   padding: 10rem 0;
 }
@@ -386,7 +373,6 @@ select:focus {
   font-size: 1.3rem;
 }
 
-/* About section */
 .about {
   padding: 10rem 0;
 
@@ -432,7 +418,6 @@ select:focus {
   bottom: 10%;
   left: 0;
 }
-/* Footer */
 .footer {
   background-color: var(--color-primary-dark);
   color: var(--color-highlight-silver);
@@ -477,7 +462,6 @@ select:focus {
   margin-bottom: 2rem;
 }
 
-/* Form */
 .booking {
   margin: 2rem 0 3rem;
 
@@ -681,7 +665,7 @@ select:focus {
   }
 }
 
-/* Animation */
+/* ANIMATION */
 @keyframes headerTrans {
   from {
     transform: translateY(-100px);

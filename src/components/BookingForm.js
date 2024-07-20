@@ -200,7 +200,7 @@ export function BookingForm({
           </p>
         )}
 
-        <Button type='lg'>Make Your reservation</Button>
+        <Button type='lg'>Make Your Reservation</Button>
       </form>
     </div>
   );

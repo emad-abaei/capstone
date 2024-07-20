@@ -1,9 +1,9 @@
 // React router
 import { NavLink } from "react-router-dom";
 
-function Nav() {
+function Nav({ showNavbar }) {
   return (
-    <nav className='navbar'>
+    <nav className={`navbar ${showNavbar ? "active" : ""}`}>
       <ul>
         <li>
           <NavLink to='/homepage' end>
